@@ -10,6 +10,38 @@ const p = document.createElement('p');
 let previousGuesses = [];
 let numGuesses = 1;
 let playGame = true;
+let remainingSeconds = 60;
+
+document.querySelector('#remaining-time').innerHTML = remainingSeconds;
+
+// Cada segundo (1000ms) quiero que ejecutes la función updateRemainingTime
+let timer = setInterval(updateRemainingTime, 1000); 
+
+function updateRemainingTime() {
+    console.log('Me ejecuto cada segundo. Valor de remainingSeconds: ', remainingSeconds);
+    // 1. Decremntar en 1 la variable de estado remainingSeconds
+    remainingSeconds = remainingSeconds - 1;
+   
+    // 2. Actualizar el innerHTML de #remaining-time con el valor de la variable remainingSeconds
+    document.querySelector('#remaining-time').innerHTML = remainingSeconds;
+
+    // 3. Cuando llegue a 0 ha perdido
+    //   3.1 Bloquear el input para que no pueda escribir más. Pensad que está funcionalidad ya se da cuando te equivocas muchas veces, buscad en el código como lo hace el programador
+    if (remainingSeconds == 0) 
+    {
+        endGame();
+        displayMessage(`Game Over! Your time is over! Number was ${randomNumber}`);
+        submit.disabled = true;
+        clearInterval(timer);
+
+    }
+
+    // 3.2 Mostrar un mensaje que el tiempo ha finalizado e informar al usuario del numero secreto, cual era
+    // 3.3 Bonus: IMPEDIR que el usuario pueda hacer click en el botón
+    // 3.4. BOnus Samané: cuando llegue a 0, debe dejar de restar. Buscar como se hace para limpiar un setInterval
+    // 3.5. Bonus: Aleix: en vez de que empiece a correr el tiempo nada más entrar, que haya un botón de Start 
+}
+
 
 if (playGame){
     subt.addEventListener('click', function(e){
@@ -93,6 +125,11 @@ function newGame(){
         userInput.removeAttribute('disabled');
         startOver.removeChild(p);
         playGame = true;
+
+        // actualizar la variable remainingSeconds a 60
+        // volver a lanzar el setInterval
+        remainingSeconds = 60;
+        timer = setInterval(updateRemainingTime, 1000); 
     })
 }
 //Allow to restart game with restart button

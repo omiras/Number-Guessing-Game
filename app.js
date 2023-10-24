@@ -1,5 +1,7 @@
 // Good luck!
 
+// Variables de estado iniciales. Puede que falta alguna...
+
 let estoyJugando = true;
 let numeroCorrecto = Math.floor(Math.random() * 100);
 let numIntentos = 10;

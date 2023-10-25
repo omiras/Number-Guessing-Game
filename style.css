@@ -19,6 +19,13 @@ body {
     padding: 7px;
 }
 
+.lowOrHi {
+    background-color: #7b3056;
+    font-size: 1.5rem;
+    color: #fff;
+    text-align: center;
+}
+
 button {
     background-color: purple;
     color: #fff;

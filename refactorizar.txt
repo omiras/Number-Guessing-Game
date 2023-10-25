@@ -1,0 +1,9 @@
+1. La variable isPlaying, no la usamos para nada. Eliminarla. A veces, hay variables de estado (o estados de la app), que puedes calcular en función de otras variables,
+sin necesidad de añadir nuevas variables 
+  1.1. Yo se que ha perdido, porque remainingAttempts == 0 y el userInputValue != correctNumber
+  1.2 Puedo saber si ha ganado, porque userInputValue == correctNumber
+
+
+2. Cuando un código se repite mucho , es bueno usar funciones para agrupar trozos de código que se repiten en varias partes de tu programa
+
+3. Solo para el DOM: Podemos guardar en variables aquellos nodos que utilicemos varias veces

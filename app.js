@@ -2,10 +2,12 @@
 
 // Variables de estado iniciales. Puede que falta alguna...
 
-let isPlaying = true;
 let correctNumber = Math.floor(Math.random() * 100) + 1;
 let reaminingAttempts = 2;
 let previousGuesses = [];
+
+// Usar variables para almacenar los nodos al principio de tu programa
+let messageField = document.querySelector("#message");
 
 // Actualizar el textContent de los nodos iniciales
 document.querySelector("#remaining-guesses").textContent = reaminingAttempts;
@@ -27,34 +29,15 @@ document.querySelector("form").addEventListener("submit", (event) => {
 
   if (reaminingAttempts == 0) {
     console.log("Hemos perdido");
-    // Hemos perdido
-    // Actualizar el #message con el mensaje de derroa
-    // Actualitzar la varible de estado isPlaying = false
-    // desactivar el input donde el usuario pone el numero. Teneis que ver por Internet como podemos poner como disabled ese input
-    // Ocultamos mediante la propiedad .style adecuada, el botón "Submit Guess"
-    document.querySelector("#message").textContent =
-      "You lost! Better luck next time!";
-    // Actualitzar la varible de estado isPlaying = false
-    isPlaying = false;
-    // desactivar el input donde el usuario pone el numero. Teneis que ver por Internet como podemos poner como disabled ese input
-    document.querySelector("#guessField").disabled = true;
-    // Ocultamos mediante la propiedad .style adecuada, el botón "Submit Guess"
-    document.querySelector("#subt").style.display = "none";
-  } else if (userValueInput > correctNumber) {
+    setEndGame("You Lost! Better luck next time!");
+  } else if (userValueInput != correctNumber) {
     // tiene que poner un número menor
-    document.querySelector("#message").textContent = "Too high! Try again!";
+    messageField.textContent = "Too high! Try again!";
   } else if (userValueInput < correctNumber) {
-    document.querySelector("#message").textContent = "Too low! Try again!";
+    messageField.textContent = "Too low! Try again!";
   } else if (userValueInput == correctNumber) {
     console.log("Hemos ganado!");
-    // Actualizar el mensaje con un mensaje de victoria
-    document.querySelector("#message").textContent = "You won! Congrats!";
-    // Actuali tzar la varible de estado isPlaying = false
-    isPlaying = false;
-    // desactivar el input donde el usuario pone el numero. Teneis que ver por Internet como podemos poner como disabled ese input
-    document.querySelector("#guessField").disabled = true;
-    // Ocultamos mediante la propiedad .style adecuada, el botón "Submit Guess"
-    document.querySelector("#subt").style.display = "none";
+    setEndGame("You Won! Congrats!");
   }
   //4. Actualizar el elemento del DOM donde se ven el número de intentos en el nodo #remaining-guesses
   document.querySelector("#remaining-guesses").textContent = reaminingAttempts;
@@ -69,3 +52,13 @@ document.querySelector("form").addEventListener("submit", (event) => {
   // "limpiamos" el input
   document.querySelector("#guessField").value = "";
 });
+
+// Función para actualizar la interfaz de usuario con un mensaje final tanto si hemos ganado como hemos perdido
+function setEndGame(message) {
+  messageField.textContent = message;
+
+  // desactivar el input donde el usuario pone el numero. Teneis que ver por Internet como podemos poner como disabled ese input
+  document.querySelector("#guessField").disabled = true;
+  // Ocultamos mediante la propiedad .style adecuada, el botón "Submit Guess"
+  document.querySelector("#subt").style.display = "none";
+}

@@ -3,7 +3,7 @@
 // Variables de estado iniciales. Puede que falta alguna...
 
 let correctNumber = Math.floor(Math.random() * 100) + 1;
-let reaminingAttempts = 2;
+let reaminingAttempts = 10;
 let previousGuesses = [];
 
 // Usar variables para almacenar los nodos al principio de tu programa

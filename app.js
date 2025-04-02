@@ -3,7 +3,7 @@
 // Variables de estado iniciales. Puede que falta alguna...
 
 let correctNumber = Math.floor(Math.random() * 100) + 1;
-let reaminingAttempts = 10;
+let reaminingAttempts = 2;
 let previousGuesses = [];
 
 // Usar variables para almacenar los nodos al principio de tu programa
@@ -27,7 +27,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
   //3. Decrementar el numero de intentos (reaminingAttempts)
   reaminingAttempts--;
 
-  if (reaminingAttempts == 0) {
+  if (reaminingAttempts == 0 && (userValueInput != correctNumber)) {
     console.log("Hemos perdido");
     setEndGame("You Lost! Better luck next time!");
   } else if (userValueInput > correctNumber) {

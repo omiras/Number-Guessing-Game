@@ -67,6 +67,10 @@ button {
     background-color: #12aab4;
 }
 
+#message {
+    background-color: #7b3056;
+}
+
 #wrapper {
     box-sizing: border-box;
     text-align: center;

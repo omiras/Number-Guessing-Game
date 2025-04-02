@@ -30,7 +30,7 @@ document.querySelector("form").addEventListener("submit", (event) => {
   if (reaminingAttempts == 0) {
     console.log("Hemos perdido");
     setEndGame("You Lost! Better luck next time!");
-  } else if (userValueInput != correctNumber) {
+  } else if (userValueInput > correctNumber) {
     // tiene que poner un número menor
     messageField.textContent = "Too high! Try again!";
   } else if (userValueInput < correctNumber) {
